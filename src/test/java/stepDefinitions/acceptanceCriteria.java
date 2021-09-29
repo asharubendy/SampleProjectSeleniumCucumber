@@ -12,7 +12,6 @@ public class acceptanceCriteria {
     @Given("I add {int} different products to my wishlist")
     public void iAddNDifferentProductsToMyWishlist(int arg0) throws InterruptedException {
         sel.given(arg0);
-       Thread.sleep(10000);
     }
 
     @When("I view my wishlist table")
@@ -22,6 +21,7 @@ public class acceptanceCriteria {
 
     @Then("I find total {int} selected item in my wishlist")
     public void iFindTotalNSelectedItemInMyWishlist(int arg0) {
+        sel.then(arg0);
     }
 
     @When("I search for lowest price product")

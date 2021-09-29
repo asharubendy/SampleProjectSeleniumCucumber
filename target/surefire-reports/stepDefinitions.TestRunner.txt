@@ -1,4 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: stepDefinitions.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.97 sec
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.625 sec <<< FAILURE!
+Adding the lowest price item to the cart from the wishlist(Adding item to cart)  Time elapsed: 7.164 sec  <<< FAILURE!
+java.lang.AssertionError: There are not : 4 elements in the wishlist
+	at org.junit.Assert.fail(Assert.java:89)
+	at webFunctions.seleniumCreator.then(seleniumCreator.java:70)
+	at stepDefinitions.acceptanceCriteria.iFindTotalNSelectedItemInMyWishlist(acceptanceCriteria.java:24)
+	at ✽.I find total 4 selected item in my wishlist(file:///B:/Github%20Projects/SampleProjectSeleniumCucumber/src/test/resources/features/acceptanceCritera.feature:6)
+

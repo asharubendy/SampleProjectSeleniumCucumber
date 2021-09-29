@@ -1,2 +1,3 @@
 stepDefinitions\TestRunner.class
+webFunctions\seleniumCreator.class
 stepDefinitions\acceptanceCriteria.class

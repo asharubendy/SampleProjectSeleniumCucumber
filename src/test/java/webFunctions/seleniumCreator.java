@@ -2,6 +2,8 @@ package webFunctions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import javax.print.DocFlavor;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -69,6 +71,28 @@ public class seleniumCreator {
         if(rows.size() != inputAmount){
             fail("There are not : " + amount + " elements in the wishlist");
         }
+    }
+    public void whenTwo (){
+            driver.get("https://testscriptdemo.com/?page_id=233&wishlist-action");
+        int[] numbersBetween = new int[inputAmount];
+        Double[] priceArray = new Double[inputAmount];
+        for (int i=0; i < (inputAmount); i++) {
+            numbersBetween[i] = i+1;
+        }
+        for (int i:numbersBetween){
+            try{
+                priceArray[i-1] = Double.parseDouble(driver.findElement(By.xpath("//tr[" + i + "]/td[4]/ins/span/bdi")).getText().substring(1));
+            }catch (Exception e){
+                try{
+                    priceArray[i-1] = Double.parseDouble(driver.findElement(By.xpath("//tr[" + i + "]/td[4]/span/bdi")).getText().substring(1));
+                }catch (Exception exception){
+                    fail(exception.getMessage());
+                }
+            }
+        }
+        Double[] x = Arrays.copyOfRange(priceArray, 0,inputAmount);
+        Arrays.sort(priceArray);
+        System.out.println("The lowest price is: " + priceArray[0]);
     }
 
 

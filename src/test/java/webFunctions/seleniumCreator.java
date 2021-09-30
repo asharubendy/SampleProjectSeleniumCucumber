@@ -116,6 +116,7 @@ public class seleniumCreator {
     public void thenTwo() throws InterruptedException {
         Thread.sleep(1000);
         driver.findElement(By.xpath("//a/i")).click();
+        driver.quit();
     }
 }
 

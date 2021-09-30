@@ -30,9 +30,11 @@ public class acceptanceCriteria {
 
     @And("I am able to add the lowest price item to my cart")
     public void iAmAbleToAddTheLowestPriceItemToMyCart() {
+        sel.and();
     }
 
     @Then("I am able to verify the item in my cart")
-    public void iAmAbleToVerifyTheItemInMyCart() {
+    public void iAmAbleToVerifyTheItemInMyCart() throws InterruptedException {
+        sel.thenTwo();
     }
 }

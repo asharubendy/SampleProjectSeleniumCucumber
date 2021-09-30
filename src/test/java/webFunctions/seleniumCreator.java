@@ -56,7 +56,7 @@ public class seleniumCreator {
         }
     }
 
-    public void given(int amount) {
+    public void addProducts(int amount) {
         driver.manage().deleteAllCookies();
         setInputAmount(amount);
         driver.get("https://testscriptdemo.com/?post_type=product");
@@ -65,13 +65,13 @@ public class seleniumCreator {
         addMultipleItemsToWishlist();
     }
 
-    public void when() {
+    public void viewWishlist() {
         driver.get("https://testscriptdemo.com/?post_type=product");
         js.executeScript("window.scrollBy(0,0)", "");
         driver.findElement(By.xpath("//body[@id='blog']/div[3]/div/div/div/div[3]/div[3]/a/i")).click();
     }
 
-    public void then(int amount) {
+    public void findTotalProducts(int amount) {
         driver.get("https://testscriptdemo.com/?page_id=233&wishlist-action");
         setInputAmount(amount);
         List<WebElement> rows = driver.findElements(By.xpath("//*[@id=\"yith-wcwl-form\"]/table/tbody/tr"));
@@ -80,7 +80,7 @@ public class seleniumCreator {
         }
     }
 
-    public void whenTwo() {
+    public void searchForLowestPricedProduct() {
         driver.get("https://testscriptdemo.com/?page_id=233&wishlist-action");
         numbersBetween = new int[inputAmount];
         priceArray = new Double[inputAmount];
@@ -103,17 +103,16 @@ public class seleniumCreator {
         System.out.println("The lowest price is: " + sortedArray[0]);
     }
 
-    public void and() {
+    public void addLowestPricedItemToCart() {
         for (Double x:priceArray){
             if (x.equals(sortedArray[0])){
                 System.out.println(Arrays.asList(priceArray).indexOf(x));
-                System.out.println(x);
                 driver.findElement(By.xpath("//tr["+ (Arrays.asList(priceArray).indexOf(x)+1) +"]/td[6]/a")).click();
             }
         }
 
     }
-    public void thenTwo() throws InterruptedException {
+    public void verifyItemIsInCart() throws InterruptedException {
         Thread.sleep(1000);
         driver.findElement(By.xpath("//a/i")).click();
         driver.quit();
